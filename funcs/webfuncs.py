@@ -114,11 +114,9 @@ def card1(titulo,subtitulo,texto,ani):
     return f"""
     {ani}
     <body>
-        <div class="card border-0" style="height: 14rem;">
+        <div class="card border-0" style="height: 180px;">
             <div class="card-body bg-warning">
                 <h5 class="card-title text-dark"><b>{titulo}</b></h5>
-                <p></p>
-                <p></p>
                 <p class="card-text text-dark">{texto}</p>
             </div>
         </div>
@@ -130,14 +128,14 @@ def card1(titulo,subtitulo,texto,ani):
 def card2(titulo,subtitulo,texto,ani):
     return f"""
     {ani}
-    <div class="card border-0" style="height: 14rem;">
-        <div class="card-body bg-dark">
-            <h5 class="card-title text-warning"><b>{titulo}</b></h5>
-            <p></p>
-            <p></p>
-            <p class="card-text text-warning">{texto}</p>
+    <body>
+        <div class="card border-0" style="height: 180px;">
+            <div class="card-body bg-dark">
+                <h5 class="card-title text-warning"><b>{titulo}</b></h5>
+                <p class="card-text text-warning">{texto}</p>
+            </div>
         </div>
-    </div>
+    </body>
     """
 
 
@@ -408,4 +406,4 @@ def autoriza():
 
 
 if __name__ == "__main__":
-    print(df)
+    importpic()

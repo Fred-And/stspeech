@@ -91,7 +91,7 @@ with col4:
     st.text('')
     st.markdown(
         card2(
-            'Circuito de tráfego',
+            'Circuito de tráfego:',
             'Voo',
             'Exercícios para treinar a fraseologia de entrada, saída e evoluções em circuitos de tráfego visual.',
             """
@@ -120,3 +120,4 @@ with col6:
     st.markdown(card1('Voo IFR:','Voo','Fraseologia básica de um voo por instrumentos com situações de SID, STAR e IAP.',""),unsafe_allow_html=True)
     st.text("")
     st.markdown(card2('Voo VFR:','Voo','Fraseologia básica de um voo visual com situações de reporte de posições.',""),unsafe_allow_html=True)
+    st.text("")
