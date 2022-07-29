@@ -1,1 +1,3 @@
 Força Aérea 2742 está autorizado Bacacheri para Guarulhos nível de voo 350 conforme rota do plano decola da pista 36 no perfil da LOMED1D transição RORIB o código transponder é o 3534 e o controle curitiba em 119.95
+Força Aérea 2742 está autorizado ___1___ para Guarulhos nível de voo ___2___ conforme rota do plano decola da pista ___3___ no perfil da LOMED1D transição RORIB o código transponder é o ___4___ e o controle curitiba em ___5___
+Bacacheri,350,36,3534,119.95

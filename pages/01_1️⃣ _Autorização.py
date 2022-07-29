@@ -42,10 +42,8 @@ def main():
         unsafe_allow_html=True
     )
 
-
+    ### SEE webfuncs.py FOR THE BACKEND OF THIS PAGE ###
     autoriza()
-
-
 
 
 if __name__ == "__main__":
