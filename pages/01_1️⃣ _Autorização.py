@@ -1,73 +1,51 @@
 from enum import auto
 import streamlit as st
 import random as rd
-from funcs.webfuncs import importaudio, centerlogo, autoriza
+from funcs.webfuncs import importaudio, centerlogo, autoriza, dynback
 
 def main():
 
     centerlogo()
+    dynback()
 
-    titulo = st.container()
-
-    ### CENTERED TITLE ###
-    with titulo:
+    ### TITLE ###
+    with st.title(""):
         st.markdown("""
         <html>
         <head>
         <style>
-            h1{text-align: center;}
+            h1{text-align: center; transition: color 1s;}
+            h1:hover{color: #FFC107;}
         </style>
         </head>
         <body>
-            <h1><b>Autorização!</b></h1>
+            <h1><b>Autorização</b></h1>
         </body>
         """,unsafe_allow_html=True)
-        st.header('Ouça o áudio a seguir e preencha da melhor maneira:',)
 
-    st.text('')
-    # audiok = importaudio()
-    # st.audio(f'/Users/fred/Documents/Repos/Streamlit/fraseologia/audios/{audiok}')
+    st.markdown("""
+        <html>
+        <head>
+        </head>
+        <style>
+            .a{height: 30px;}
+            .b{text-align: center;}
+        </style>
+        <body>
+            <p></p>
+            <p class="b"><b>Ouça o áudio a seguir, depois responda as questões</b></p>
+            <div class="a"></div>
+        </body
+        </html>
+        """,
+        unsafe_allow_html=True
+    )
 
-    # with st.container():
-    #     col1, col2, col3, col4, col5 = st.columns(5)
-    #     with col1:
-    #         options = [
-    #             'seleções',
-    #             'opções',
-    #             'caixa',
-    #             'sobrecaixas'
-    #             ]
-    #         sb1 = st.selectbox('', options)
 
-    #     with col2:
-    #         options1 = [
-    #             'aluno',
-    #             'instruendo',
-    #             'pupilo',
-    #             'ser sem luz'
-    #             ]
-    #         sb2 = st.selectbox('', options1)
-
-    #     with col3:
-    #         options2 = [
-    #             'pior',
-    #             'mais horrivel'
-    #             ,'melhor'
-    #             ]
-    #         sb3 = st.selectbox('', options2)
-
-    #     with col4:
-    #         options3 = [1,2]
-    #         sb4 = st.selectbox('',options3)
-        
-    #     with col5:
-    #         options4 = [3,4]
-    #         sb5 = st.selectbox('',options4)
     autoriza()
 
-        
+
 
 
 if __name__ == "__main__":
      main()
-

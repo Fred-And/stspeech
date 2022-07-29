@@ -1,21 +1,29 @@
 import streamlit as st
 from funcs.webfuncs import card1, card2, bootactivate, dynback
 
+###ACTIVATE BOOTSTRAP###
 bootactivate()
+
+###DYNAMIC BACKGOUND###
 dynback()
 
+###COLUMNS FOR THE LOGO POSITIONING###
 col1, col2, col3 = st.columns(3)
 
 ###HEADER WITH LOGO
+
+#blank space
 with col1:
     st.write(' ')
 
+#LOGO is here#
 with col2:
     st.image('img/logo.png')
 
+#Blank space
 with col3:
     st.write(' ')
-    
+
 ### TITLE ###
 with st.title(""):
     st.markdown("""
@@ -112,18 +120,3 @@ with col6:
     st.markdown(card1('Voo IFR:','Voo','Fraseologia básica de um voo por instrumentos com situações de SID, STAR e IAP.',""),unsafe_allow_html=True)
     st.text("")
     st.markdown(card2('Voo VFR:','Voo','Fraseologia básica de um voo visual com situações de reporte de posições.',""),unsafe_allow_html=True)
-
-
-
-
-# with st.expander('VEJA O QUE VOCÊ IRÁ ENCONTRAR NESTE MÓDULO:'):
-#     st.markdown('''
-#     1. <b><u>Autorização</u></b> : Exercícios para praticar receber autorizações ATC.
-#     2. <b><u>Circuito de tráfego</u></b> : Exercícios para treinar a fraseologia de entrada, saída e evoluções em
-#         circuitos de tráfego visual.
-#     3. <b><u>Solo</u></b> : Exercícios com o objetivo de treinar a fraseologia de movimentações no solo.
-
-#     4. <b><u>Torre</u></b> : Fraseologia básica de TWR com autorizações de pouso, decolagem, condicionais etc.
-#     5. <b><u>Voo IFR</u></b> : Fraseologia básica de um voo por instrumentos com situações de SID, STAR e IAP.
-#     6. <b><u>Voo VFR</u></b> : Fraseologia básica de um voo visual com situações de reporte de posições.
-#     ''',unsafe_allow_html=True)

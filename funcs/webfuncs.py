@@ -170,7 +170,6 @@ def dynback():
     """
     <html lang="en">
     <head>
-    <!--link rel="stylesheet" href="style.css"-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -195,7 +194,7 @@ def dynback():
             width: 0px;
             opacity: .75;
             background-color: white;
-            box-shadow: #e9f1f1 0px 0px 20px 2px;
+            box-shadow: #FFC107 0px 0px 20px 2px;
             opacity: 0;
             top: 100vh;
             bottom: 0px;
@@ -353,7 +352,7 @@ def dynback():
             <div class='light x9'></div>
     </body>
     </html>
-    
+
     """,
     unsafe_allow_html=True)
 
@@ -395,15 +394,15 @@ def autoriza():
         with col4:
             options3 = [1,2]
             sb4 = st.selectbox('',options3)
-        
+
         with col5:
             options4 = [3,4]
             sb5 = st.selectbox('',options4)
-        
+
     st.markdown(
-        f"""<h6>Este é apenas um teste de como colocar 
-        <b><u>{sb1}</u></b> avulsas no meio do texto para que o 
-        <b><u>{sb2}</u></b> possa preencher as lacunas da 
+        f"""<h6>Este é apenas um teste de como colocar
+        <b><u>{sb1}</u></b> avulsas no meio do texto para que o
+        <b><u>{sb2}</u></b> possa preencher as lacunas da
         <b><u>{sb3}</u></b> maneira possível</h6>""",
         unsafe_allow_html=True)
 
