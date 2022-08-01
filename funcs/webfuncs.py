@@ -14,7 +14,7 @@ enunciados = {
 
 df = pd.DataFrame(enunciados)
 
-###CREATES AS QUESTION TITLE###
+### CREATES AS QUESTION TITLE ###
 def enunciado():
 
     aeroporto = [] # AIRPORT
@@ -81,14 +81,14 @@ def enunciado():
     return enunciado
 
 
-###IMPORTS A RANDOM PIC FROM A THE AD FOLDER###
+### IMPORTS A RANDOM PIC FROM A THE AD FOLDER ###
 def importpic():
     adpath = '/Users/fred/Documents/Repos/Streamlit/fraseologia/img/ad'
     pic = rd.choice(os.listdir(adpath))
     return str(pic)
 
 
-###SPEECH RECOGNITION SCRIPT(ALREADY IMPLEMENTED TO STREAMLIT)###
+### SPEECH RECOGNITION SCRIPT(ALREADY IMPLEMENTED TO STREAMLIT) ###
 def srg():
     rec = sr.Recognizer()
     with sr.Microphone() as mic:
@@ -102,7 +102,7 @@ def srg():
     return
 
 
-###IMPORTS A RANDOM AUDIO FROM AUDIOS FOLDER###
+### IMPORTS A RANDOM AUDIO FROM AUDIOS FOLDER ###
 def importaudio():
     audiopath = '/Users/fred/Documents/Repos/Streamlit/fraseologia/audios'
     audio = rd.choice(os.listdir(audiopath))
@@ -139,7 +139,7 @@ def card2(titulo,subtitulo,texto,ani):
     """
 
 
-###ACTIVATE BOOTSTRAP###
+### ACTIVATE BOOTSTRAP ###
 def bootactivate():
     return st.markdown("""
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -357,14 +357,18 @@ def dynback():
 
 ### AUTORIZAÇÃO PAGE BACKEND ###
 def autoriza():
+
+    ### LIST FOR THE CORRECT ANSWERS ###
     choices = []
 
     ### IMPORT A RANDOM AUDIO FOR THE EXERCISE ###
-    audiopath = '/Users/fred/Documents/Repos/Streamlit/fraseologia/audios'
-    audio = rd.choice(os.listdir(audiopath))
+    audiopath = '/Users/fred/Documents/Repos/Streamlit/fraseologia/audios' # .mp3 folder path
+    audio = rd.choice(os.listdir(audiopath))# random choice of an .mp3 file within this folder
+
+    ### PLAYER ###
     st.audio(f'/Users/fred/Documents/Repos/Streamlit/fraseologia/audios/{audio}')
 
-    ### IMPORT SCRIPT BASED ON THE RANDM AUDIO IMPORTED ###
+    ### IMPORT SCRIPT BASED ON THE RANDOM AUDIO IMPORTED ###
     scriptname = f"{audio[:-4]}.txt" ### TRANSFORMING THE .mp3 STRING IN A .txt
     with open(f'/Users/fred/Documents/Repos/Streamlit/fraseologia/audioscripts/{scriptname}', 'r') as scp:
         excript = scp.readlines()[1] # exercise script, without variables#
@@ -372,8 +376,8 @@ def autoriza():
         benchmark = scp.readlines()[0] # full script that will be used as benchmark
     with open(f'/Users/fred/Documents/Repos/Streamlit/fraseologia/audioscripts/{scriptname}', 'r') as scp:
         var = scp.readlines()[2]# correct variables
-        varlist = var.split(",")
-        choices.append(varlist)
+        varlist = var.split(",")# split the correct variables by ","
+        choices.append(varlist) # append the correct variables of this excercise
 
     ### SELECT BOXES ###
     with st.container():
@@ -433,18 +437,38 @@ def autoriza():
                 choices[0][3],
                 ]
             sb5 = st.selectbox('',options4)
-    st.markdown(
-        excript,
-        unsafe_allow_html=True)
-    answer = excript.replace("___1___",sb1).replace("___2___",sb2).replace("___3___",sb3).replace("___4___",sb4).replace("___5___",sb5[:-1])
 
-    if st.button("Enviar"):
-        if answer == benchmark:
-            st.write("Boa!! Parabéns")
+    ### JUST A RANDOM SPACE ###
+    st.write("")
+
+    ### SENTENCE WITH BLANKS ###
+    st.markdown(f"""
+    <html>
+        <body>
+            <div style="height:110px; background-color: #FFC107; border-radius: 10px; color:#000000; padding: 1em;">
+            <p>{excript}</p></div>
+            <div style="height: 20px;"></div>
+        </body>
+    </html>
+    """,unsafe_allow_html=True)
+
+    ### REPLACE THE BLANKS WITH THE STUDENT CHOSEN OPTIONS ###
+    answer = excript.replace("___1___",sb1).replace("___2___",sb2).replace("___3___",sb3).replace("___4___",sb4).replace("___5___",sb5.strip())
+
+    ### CREATED COLUMNS TO SEPARATE THE "SEND" AND "NEXT" BUTOONS, COLUMNS 2,3 and 4 INTENTIONALLY LEFT BLANK ###
+    col1, col2, col3, col4, col5 = st.columns(5)
+    with col1:
+        if st.button("Enviar"):
+            if answer == benchmark:
+                st.write("Boa!! Parabéns")
+            else:
+                st.write("Não foi dessa vez")
         else:
-            st.write("Não foi dessa vez")
-    else:
-        st.write("Aguardando resposta")
+            st.write("Aguardando resposta")
+    with col5:
+        st.button("Próxima")
+
+
 
 if __name__ == "__main__":
     filename = importaudio()
