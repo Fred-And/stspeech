@@ -1,5 +1,5 @@
 
-![alt text](readmepic/Αεροπλάνο  飛機  самолет  طائرة.png)
+![alt text](readmepic/readme.png)
 
 # Speech Recognition WebApp
 
