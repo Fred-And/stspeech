@@ -1,3 +1,6 @@
+
+![alt text](readmepic/Αεροπλάνο  飛機  самолет  طائرة.png)
+
 # Speech Recognition WebApp
 
 ## This is a Speech recognition WebApp focused on the aviation segment.
