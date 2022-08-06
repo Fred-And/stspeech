@@ -1,0 +1,3 @@
+PT-TXH esta autorizado de Londrina para Guarulhos nível de voo 350 conforme rota do plano perfil da saída será a saída OMNI decola da pista 15 após decolagem sobe ate 5000ft, depois de 5000ft curva a direita para interceptar um arco DME de 20nm após fica sujeito ao controle de tráfego aéreo aciona código 3254 chama o controle curitiba em 119,95
+PT-TXH esta autorizado de Londrina para Guarulhos nível de voo 350 conforme rota do plano perfil da saída será a saída --1-- decola da pista --2-- após decolagem sobe ate 5000ft, depois de 5000ft curva a --3-- para interceptar um arco DME de --4--nm após fica sujeito ao controle de tráfego aéreo aciona código 3254 chama o controle curitiba em --5--
+OMNI,15,direita,20,119,95
