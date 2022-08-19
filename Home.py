@@ -121,3 +121,5 @@ with col6:
     st.text("")
     st.markdown(card2('Voo VFR:','Voo','Fraseologia básica de um voo visual com situações de reporte de posições.',""),unsafe_allow_html=True)
     st.text("")
+
+### PAGE SELECTOR

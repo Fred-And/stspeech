@@ -1,12 +1,11 @@
 from enum import auto
 import streamlit as st
 import random as rd
-from funcs.webfuncs import importaudio, centerlogo, autoriza, dynback
+#from funcs.webfuncs import importaudio, centerlogo, autoriza, dynback
 
-def main():
+def autorizacaopage():
 
-    centerlogo()
-    dynback()
+    
 
     ### TITLE ###
     with st.title(""):
@@ -43,8 +42,7 @@ def main():
     )
 
     ### SEE webfuncs.py FOR THE BACKEND OF THIS PAGE ###
-    autoriza()
 
 
-if __name__ == "__main__":
-     main()
+#if __name__ == "__main__":
+
