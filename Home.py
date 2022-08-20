@@ -57,6 +57,7 @@ st.markdown(
             background: #212529;
             width: 700px;
             height: 60px;
+            padding: 06px;
         }
     </style>
     <body>
@@ -67,7 +68,7 @@ st.markdown(
     )
 
 ### 6 BOXES WITH PRODUCT FEATURES ###
-col4, col5, col6 = st.columns(3)
+col4, col5 = st.columns(2)
 
 ### AUTORIZAÇAO E CIRCUITO DE TRÁFEGO CARDS ###
 with col4:
@@ -89,37 +90,21 @@ with col4:
         unsafe_allow_html=True
         )
     st.text('')
-    st.markdown(
-        card2(
-            'Circuito de tráfego:',
-            'Voo',
-            'Exercícios para treinar a fraseologia de entrada, saída e evoluções em circuitos de tráfego visual.',
-            """
-            <style>
-                .card{
-                    transition: transform .2s;
-                }
-                .card:hover{
-                    transform: scale(1.1);
-                }
-            </style>"""
-            ),
-        unsafe_allow_html=True
-        )
-    st.text("")
+    
+    #st.text("")
 
 ### TORRE E SOLO CARDS ###
 with col5:
     st.markdown(card2('Solo:','Solo','Exercícios com o objetivo de treinar a fraseologia de movimentações no solo.',""),unsafe_allow_html=True)
     st.text("")
-    st.markdown(card1('Torre:','Voo/Solo','Fraseologia básica de TWR com autorizações de pouso, decolagem, condicionais etc.',""),unsafe_allow_html=True)
-    st.text("")
+    #st.markdown(card1('Torre:','Voo/Solo','Fraseologia básica de TWR com autorizações de pouso, decolagem, condicionais etc.',""),unsafe_allow_html=True)
+    #st.text("")
 
 ### VOO VFR E VOO IFR CARDS###
-with col6:
-    st.markdown(card1('Voo IFR:','Voo','Fraseologia básica de um voo por instrumentos com situações de SID, STAR e IAP.',""),unsafe_allow_html=True)
-    st.text("")
-    st.markdown(card2('Voo VFR:','Voo','Fraseologia básica de um voo visual com situações de reporte de posições.',""),unsafe_allow_html=True)
-    st.text("")
+#with col6:
+#    st.markdown(card1('Voo IFR:','Voo','Fraseologia básica de um voo por instrumentos com situações de SID, STAR e IAP.',""),unsafe_allow_html=True)
+#    st.text("")
+#    st.markdown(card2('Voo VFR:','Voo','Fraseologia básica de um voo visual com situações de reporte de posições.',""),unsafe_allow_html=True)
+#    st.text("")
 
 ### PAGE SELECTOR

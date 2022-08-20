@@ -70,6 +70,9 @@ def exeproa(nivel,assunto):
     exercicio = requests.get(f'{api}/teoria/{nivel}/{assunto}/{escolhido}/.json')
     exercicioDecode = exercicio.json()
     return exercicioDecode
+
+
+
 ####------------------------------------- SUBPÁGINAS -------------------------------------####
 
 ### SUBPÁGINA DE ALTITUDES

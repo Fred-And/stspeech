@@ -7,12 +7,6 @@ from ast import Return
 from numpy import append
 import pandas as pd
 
-enunciados = {
-    'matricula':['PT-YNC','PT-GBK','PR-ACP','PS-FFE','PP-FNE','PS-WBC','PP-XMC','PT-FAA','PT-NYC','PR-RMA'],
-    'aeros':['Bacacheri','Congonhas','Confins','Guarulhos','Curitiba','Belém','Brasília','Galeão','Santos Dumont','Porto Alegre'],
-    'icao':['SBBI','SBSP','SBCF','SBGR','SBCT','SBBE','SBBR','SBGL','SBRJ','SBPA']}
-
-df = pd.DataFrame(enunciados)
 
 ### CREATES AS QUESTION TITLE ###
 def enunciado():
