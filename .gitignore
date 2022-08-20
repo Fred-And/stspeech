@@ -3,6 +3,4 @@
 /Unused files
 .DS_Store
 /funcs/__pycache__
-/audioscripts
-/audios
-/database
+/pages/Treinamentodebug.py

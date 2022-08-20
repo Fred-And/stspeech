@@ -91,9 +91,9 @@ def srg():
         audio = rec.listen(mic)
         texto = rec.recognize_google(audio, language="pt-BR")
         #print(texto)
-        with open('text.txt', 'w') as f:
-            f.write(texto)
-    return
+        #with open('text.txt', 'w') as f:
+        #    f.write(texto)
+    return texto
 
 
 ### IMPORTS A RANDOM AUDIO FROM AUDIOS FOLDER ###
