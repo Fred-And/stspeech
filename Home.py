@@ -1,11 +1,11 @@
 import streamlit as st
-from funcs.webfuncs import card1, card2, bootactivate, dynback
+from funcs.web_funcs import card_1, card_2, boot_activate, dyn_back
 
 ###ACTIVATE BOOTSTRAP###
-bootactivate()
+boot_activate()
 
 ###DYNAMIC BACKGOUND###
-dynback()
+dyn_back()
 
 ###COLUMNS FOR THE LOGO POSITIONING###
 col1, col2, col3 = st.columns(3)
@@ -73,7 +73,7 @@ col4, col5 = st.columns(2)
 ### AUTORIZAÇAO E CIRCUITO DE TRÁFEGO CARDS ###
 with col4:
     st.markdown(
-        card1(
+        card_1(
             'Autorização:',
             'Solo',
             'Exercícios para praticar o recebimento de autorizações ATC.',
@@ -90,21 +90,12 @@ with col4:
         unsafe_allow_html=True
         )
     st.text('')
-    
+
     #st.text("")
 
 ### TORRE E SOLO CARDS ###
 with col5:
-    st.markdown(card2('Solo:','Solo','Exercícios com o objetivo de treinar a fraseologia de movimentações no solo.',""),unsafe_allow_html=True)
+    st.markdown(card_2('Solo:','Solo','Exercícios com o objetivo de treinar a fraseologia de movimentações no solo.',""),unsafe_allow_html=True)
     st.text("")
     #st.markdown(card1('Torre:','Voo/Solo','Fraseologia básica de TWR com autorizações de pouso, decolagem, condicionais etc.',""),unsafe_allow_html=True)
     #st.text("")
-
-### VOO VFR E VOO IFR CARDS###
-#with col6:
-#    st.markdown(card1('Voo IFR:','Voo','Fraseologia básica de um voo por instrumentos com situações de SID, STAR e IAP.',""),unsafe_allow_html=True)
-#    st.text("")
-#    st.markdown(card2('Voo VFR:','Voo','Fraseologia básica de um voo visual com situações de reporte de posições.',""),unsafe_allow_html=True)
-#    st.text("")
-
-### PAGE SELECTOR

@@ -4,72 +4,72 @@ import pyaudio
 import requests
 import random
 import json
-from funcs.webfuncs import bootactivate, centerlogo, dynback, srg
+from funcs.web_funcs import boot_activate, center_logo, dyn_back, speech_rec
 
 
 ###ACTIVATE BOOTSTRAP###
-bootactivate()
+boot_activate()
 
 ###LOGO CENTER FUNC###
-centerlogo()
+center_logo()
 
 ###DYNAMIC BACKGROUND###
-dynback()
+dyn_back()
 
 
 ### REQUEST DE EXERCÍCIOS
 
 ## REQUEST ALTITUDE ##
-def exealt(nivel,assunto):
+def exe_alt(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
-    altitude = requests.get(f'{api}/teoria/{nivel}/{assunto}/.json')
-    altitudeDecode = altitude.json()
-    altitudeList = list(altitudeDecode)
-    tamanhoAltitude = len(altitudeDecode)
-    rand = random.randint(0,tamanhoAltitude-1)
-    escolhido = altitudeList[rand]
-    exercicio = requests.get(f'{api}/teoria/{nivel}/{assunto}/{escolhido}/.json')
-    exercicioDecode = exercicio.json()
-    return exercicioDecode
+    altitude = requests.get(f'{api}/teoria/{level}/{sub}/.json')
+    altitude_decode = altitude.json()
+    altitude_list = list(altitude_decode)
+    altitude_len = len(altitude_decode)
+    rand = random.randint(0,altitude_len-1)
+    chosen = altitude_list[rand]
+    exercise = requests.get(f'{api}/teoria/{level}/{sub}/{chosen}/.json')
+    exercise_decode = exercise.json()
+    return exercise_decode
 
 ## REQUEST DISTANCIAS ##
-def exedist(nivel,assunto):
+def exe_dist(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
-    altitude = requests.get(f'{api}/teoria/{nivel}/{assunto}/.json')
-    altitudeDecode = altitude.json()
-    altitudeList = list(altitudeDecode)
-    tamanhoAltitude = len(altitudeDecode)
-    rand = random.randint(0,tamanhoAltitude-1)
-    escolhido = altitudeList[rand]
-    exercicio = requests.get(f'{api}/teoria/{nivel}/{assunto}/{escolhido}/.json')
-    exercicioDecode = exercicio.json()
-    return exercicioDecode
+    distance = requests.get(f'{api}/teoria/{level}/{sub}/.json')
+    distance_decode = distance.json()
+    distance_list = list(distance_decode)
+    distance_len = len(distance_decode)
+    rand = random.randint(0,distance_len-1)
+    chosen = distance_list[rand]
+    exercise = requests.get(f'{api}/teoria/{level}/{sub}/{chosen}/.json')
+    exercise_decode = exercise.json()
+    return exercise_decode
 
 ## REQUEST FREQUENCIAS ##
-def exefreq(nivel,assunto):
+def exe_freq(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
-    altitude = requests.get(f'{api}/teoria/{nivel}/{assunto}/.json')
-    altitudeDecode = altitude.json()
-    altitudeList = list(altitudeDecode)
-    tamanhoAltitude = len(altitudeDecode)
-    rand = random.randint(0,tamanhoAltitude-1)
-    escolhido = altitudeList[rand]
-    exercicio = requests.get(f'{api}/teoria/{nivel}/{assunto}/{escolhido}/.json')
-    exercicioDecode = exercicio.json()
-    return exercicioDecode
+    frequency = requests.get(f'{api}/teoria/{level}/{sub}/.json')
+    frequency_decode = frequency.json()
+    frequency_list = list(frequency_decode)
+    frequency_len = len(frequency_decode)
+    rand = random.randint(0,frequency_len-1)
+    chosen = frequency_list[rand]
+    exercise = requests.get(f'{api}/teoria/{level}/{sub}/{chosen}/.json')
+    exercise_decode = exercise.json()
+    return exercise_decode
 
 ## REQUEST PROA ##
-def exeproa(nivel,assunto):
+def exe_heading(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
-    altitude = requests.get(f'{api}/teoria/{nivel}/{assunto}/.json')
-    altitudeDecode = altitude.json()
-    altitudeList = list(altitudeDecode)
-    tamanhoAltitude = len(altitudeDecode)
-    rand = random.randint(0,tamanhoAltitude-1)
-    escolhido = altitudeList[rand]
-    exercicio = requests.get(f'{api}/teoria/{nivel}/{assunto}/{escolhido}/.json')
-    exercicioDecode = exercicio.json()
-    return exercicioDecode
+    heading = requests.get(f'{api}/teoria/{level}/{sub}/.json')
+    heading_decode = heading.json()
+    heading_list = list(heading_decode)
+    heading_len = len(heading_decode)
+    rand = random.randint(0,heading_len-1)
+    chosen = heading_list[rand]
+    exercise = requests.get(f'{api}/teoria/{level}/{sub}/{chosen}/.json')
+    exercise_decode = exercise.json()
+    return exercise_decode
 
 
 
@@ -98,13 +98,13 @@ def altitudes():
 
     ### REQUEST DE EXERCÍCIO ###
 
-    exalt = exealt('nivel1','altitudes')
+    ex_alt = exe_alt('nivel1','altitudes')
 
     if "alt_state" not in st.session_state:
-        st.session_state.alt_state = exalt
+        st.session_state.alt_state = ex_alt
 
     def rerun():
-        st.session_state.alt_state = exealt('nivel1','altitudes')
+        st.session_state.alt_state = exe_alt('nivel1','altitudes')
 
 
     ### CONTAINER DO ENUNCIADO ###
@@ -157,10 +157,10 @@ def altitudes():
             rec.adjust_for_ambient_noise(mic)
             #st.write('gravando...')
             audio = rec.listen(mic)
-            texto = rec.recognize_google(audio, language="pt-BR")
-            print(texto)
+            text = rec.recognize_google(audio, language="pt-BR")
+            print(text)
             print(st.session_state.alt_state['benchmark'])
-            if texto == st.session_state.alt_state['benchmark']:
+            if text == st.session_state.alt_state['benchmark']:
                 st.text('Resposta certa!!!')
             else:
                 st.text('Resposta errada :(')
@@ -197,7 +197,7 @@ def altitudes():
 
 
 ### SUBPÁGINA DE DISTANCIAS
-def distancias():
+def distances():
 
 
     ### PAGE TITLE
@@ -219,22 +219,13 @@ def distancias():
 
     ### REQUEST DE EXERCÍCIO ###
 
-    exdist = exedist('nivel1','distancias')
+    ex_dist = exe_dist('nivel1','distancias')
 
     if "dist_state" not in st.session_state:
-        st.session_state.dist_state = exdist
+        st.session_state.dist_state = ex_dist
 
     def rerun():
-        st.session_state.dist_state = exedist('nivel1','distancias')
-
-
-    ### CONTAINER DO ENUNCIADO ###
-    # if "load_state" not in st.session_state:
-    #     st.session_state.load_state = False
-    #
-    # if st.button("Gerar exercício") or st.session_state.load_state:
-    #     st.session_state.load_state = True
-    #     gerarquestao()
+        st.session_state.dist_state = exe_dist('nivel1','distancias')
 
     st.markdown(
     """
@@ -268,8 +259,6 @@ def distancias():
 
     st.text("")
 
-    #st.session_state.load_state['benchmark']
-
     ### BOTÃO GRAVAR ###
 
     if st.button("Gravar"):
@@ -278,10 +267,10 @@ def distancias():
             rec.adjust_for_ambient_noise(mic)
             #st.write('gravando...')
             audio = rec.listen(mic)
-            texto = rec.recognize_google(audio, language="pt-BR")
-            print(texto)
+            text = rec.recognize_google(audio, language="pt-BR")
+            print(text)
             print(st.session_state.dist_state['benchmark'])
-            if texto == st.session_state.dist_state['benchmark']:
+            if text == st.session_state.dist_state['benchmark']:
                 st.text('Resposta certa!!!')
             else:
                 st.text('Resposta errada :(')
@@ -318,7 +307,7 @@ def distancias():
 
 
 ### SUBPÁGINA DE FREQUENCIAS
-def frequencias():
+def frequencies():
 
 
     ### PAGE TITLE
@@ -340,23 +329,14 @@ def frequencias():
 
     ### REQUEST DE EXERCÍCIO ###
 
-    exfreq = exefreq('nivel1','frequencias')
+    ex_freq = exe_freq('nivel1','frequencias')
 
     if "freq_state" not in st.session_state:
-        st.session_state.freq_state = exfreq
+        st.session_state.freq_state = ex_freq
 
     def rerun():
-        st.session_state.freq_state = exefreq('nivel1','frequencias')
+        st.session_state.freq_state = exe_freq('nivel1','frequencias')
 
-
-
-    ### CONTAINER DO ENUNCIADO ###
-    # if "load_state" not in st.session_state:
-    #     st.session_state.load_state = False
-    #
-    # if st.button("Gerar exercício") or st.session_state.load_state:
-    #     st.session_state.load_state = True
-    #     gerarquestao()
 
     st.markdown(
     """
@@ -390,8 +370,6 @@ def frequencias():
 
     st.text("")
 
-    #st.session_state.load_state['benchmark']
-
     ### BOTÃO GRAVAR ###
 
     if st.button("Gravar"):
@@ -400,10 +378,10 @@ def frequencias():
             rec.adjust_for_ambient_noise(mic)
             #st.write('gravando...')
             audio = rec.listen(mic)
-            texto = rec.recognize_google(audio, language="pt-BR")
-            print(texto)
+            text = rec.recognize_google(audio, language="pt-BR")
+            print(text)
             print(st.session_state.freq_state['benchmark'])
-            if texto == st.session_state.freq_state['benchmark']:
+            if text == st.session_state.freq_state['benchmark']:
                 st.text('Resposta certa!!!')
             else:
                 st.text('Resposta errada :(')
@@ -440,7 +418,7 @@ def frequencias():
 
 
 ### SUBPÁGINA DE PROAS
-def proas():
+def headings():
 
 
     ### PAGE TITLE
@@ -462,21 +440,14 @@ def proas():
 
     ### REQUEST DE EXERCÍCIO ###
 
-    exproa = exeproa('nivel1','proas')
+    ex_heading = exe_heading('nivel1','proas')
 
     if "proa_state" not in st.session_state:
-        st.session_state.proa_state = exproa
+        st.session_state.proa_state = ex_heading
 
     def rerun():
-        st.session_state.proa_state = exeproa('nivel1','proas')
+        st.session_state.proa_state = exe_heading('nivel1','proas')
 
-    ### CONTAINER DO ENUNCIADO ###
-    # if "load_state" not in st.session_state:
-    #     st.session_state.load_state = False
-    #
-    # if st.button("Gerar exercício") or st.session_state.load_state:
-    #     st.session_state.load_state = True
-    #     gerarquestao()
 
     st.markdown(
     """
@@ -510,8 +481,6 @@ def proas():
 
     st.text("")
 
-    #st.session_state.load_state['benchmark']
-
     ### BOTÃO GRAVAR ###
 
     if st.button("Gravar"):
@@ -520,10 +489,10 @@ def proas():
             rec.adjust_for_ambient_noise(mic)
             #st.write('gravando...')
             audio = rec.listen(mic)
-            texto = rec.recognize_google(audio, language="pt-BR")
-            print(texto)
+            text = rec.recognize_google(audio, language="pt-BR")
+            print(text)
             print(st.session_state.proa_state['benchmark'])
-            if texto == st.session_state.proa_state['benchmark']:
+            if text == st.session_state.proa_state['benchmark']:
                 st.text('Resposta certa!!!')
             else:
                 st.text('Resposta errada :(')
@@ -562,9 +531,9 @@ def proas():
 ### INDEX DE PÁGINAS + FUNÇÃO PARA RODAR
 page_names_to_funcs = {
     "Altitudes": altitudes,
-    "Distâncias": distancias,
-    "Frequências": frequencias,
-    "Proas": proas,
+    "Distâncias": distances,
+    "Frequências": frequencies,
+    "Proas": headings,
 }
 
 selected_page = st.sidebar.selectbox("Selecione o tipo de exercício:", page_names_to_funcs.keys())
