@@ -12,11 +12,11 @@ col1, col2, col3 = st.columns(3)
 
 ###HEADER WITH LOGO
 
-#blank space
+#BLANK SPACE#
 with col1:
     st.write(' ')
 
-#LOGO is here#
+#LOGO IS HERE#
 with col2:
     st.image('img/logo.png')
 
@@ -24,7 +24,7 @@ with col2:
 with col3:
     st.write(' ')
 
-### TITLE ###
+### TITLE (html) ###
 with st.title(""):
     st.markdown("""
     <html>
@@ -39,7 +39,7 @@ with st.title(""):
     </body>
     """,unsafe_allow_html=True)
 
-### ABOUT ###
+### ABOUT (html) ###
 st.markdown(
     '''
     <style>
@@ -74,9 +74,9 @@ col4, col5 = st.columns(2)
 with col4:
     st.markdown(
         card_1(
-            'Autorização:',
-            'Solo',
-            'Exercícios para praticar o recebimento de autorizações ATC.',
+            'Prática:',
+            ' ',
+            'Exercícios mais completos para treinamento de fraseologia.',
             """
             <style>
                 .card{
@@ -89,13 +89,10 @@ with col4:
             ),
         unsafe_allow_html=True
         )
-    st.text('')
 
     #st.text("")
 
 ### TORRE E SOLO CARDS ###
 with col5:
-    st.markdown(card_2('Solo:','Solo','Exercícios com o objetivo de treinar a fraseologia de movimentações no solo.',""),unsafe_allow_html=True)
-    st.text("")
-    #st.markdown(card1('Torre:','Voo/Solo','Fraseologia básica de TWR com autorizações de pouso, decolagem, condicionais etc.',""),unsafe_allow_html=True)
-    #st.text("")
+    st.markdown(card_2('Treinamento:','','A base que você precisa para conseguir realizar os exercícios da parte prática',""),unsafe_allow_html=True)
+    
