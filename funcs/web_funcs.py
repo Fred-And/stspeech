@@ -20,7 +20,7 @@ def import_pic():
 ### SPEECH RECOGNITION SCRIPT(ALREADY IMPLEMENTED TO STREAMLIT) ###
 def speech_rec():
     rec = sr.Recognizer()
-    with sr.Microphone(device_index=2) as mic:
+    with sr.Microphone() as mic:
         rec.adjust_for_ambient_noise(mic)
         audio = rec.listen(mic)
         text = rec.recognize_google(audio, language="pt-BR")
