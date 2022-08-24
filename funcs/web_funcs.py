@@ -1,3 +1,4 @@
+from dataclasses import replace
 import os
 import pyaudio
 import random as rd
@@ -6,6 +7,7 @@ import streamlit as st
 from ast import Return
 from numpy import append
 import pandas as pd
+import spacy
 
 
 ### IMPORTS A RANDOM PIC FROM A THE AD FOLDER ###
@@ -20,12 +22,8 @@ def speech_rec():
     rec = sr.Recognizer()
     with sr.Microphone() as mic:
         rec.adjust_for_ambient_noise(mic)
-        st.write('gravando...')
         audio = rec.listen(mic)
         text = rec.recognize_google(audio, language="pt-BR")
-        #print(texto)
-        #with open('text.txt', 'w') as f:
-        #    f.write(texto)
     return text
 
 
@@ -281,8 +279,24 @@ def dyn_back():
     """,
     unsafe_allow_html=True)
 
+### STRING COMPARISON ###
 
+def string_comparison(speech,benchmark):
+    nlp = spacy.load("pt_core_news_lg")
 
+    t1 = speech
+    t2 = benchmark
+
+    t1 = nlp(t1)
+    t2 = nlp(t2)
+
+    similarity = t1.similarity(t2)
+
+    return similarity
+
+def number_change(text):
+    for i in text:
+        replace()
 
 if __name__ == "__main__":
     print("Hello World")

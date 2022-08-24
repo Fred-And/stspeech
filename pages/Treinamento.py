@@ -1,25 +1,24 @@
+# IMPORTS #
 import streamlit as st
-import speech_recognition as sr
-import pyaudio
 import requests
 import random
 import json
-from funcs.web_funcs import boot_activate, center_logo, dyn_back, speech_rec
+from funcs.web_funcs import boot_activate, center_logo, dyn_back, speech_rec, string_comparison
 
 
-###ACTIVATE BOOTSTRAP###
+# ACTIVATE BOOTSTRAP #
 boot_activate()
 
-###LOGO CENTER FUNC###
+# LOGO CENTER FUNCTION #
 center_logo()
 
-###DYNAMIC BACKGROUND###
+# DYNAMIC BACKGROUND #
 dyn_back()
 
 
-### REQUEST DE EXERCÍCIOS
+# EXERCISE API REQUEST #
 
-## REQUEST ALTITUDE ##
+## REQUEST ALTITUDE EXERCISES ##
 def exe_alt(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
     altitude = requests.get(f'{api}/teoria/{level}/{sub}/.json')
@@ -32,7 +31,7 @@ def exe_alt(level,sub):
     exercise_decode = exercise.json()
     return exercise_decode
 
-## REQUEST DISTANCIAS ##
+## REQUEST DISTANCES EXERCISES ##
 def exe_dist(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
     distance = requests.get(f'{api}/teoria/{level}/{sub}/.json')
@@ -45,7 +44,7 @@ def exe_dist(level,sub):
     exercise_decode = exercise.json()
     return exercise_decode
 
-## REQUEST FREQUENCIAS ##
+## REQUEST FRQUENCIES EXERCISES ##
 def exe_freq(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
     frequency = requests.get(f'{api}/teoria/{level}/{sub}/.json')
@@ -58,7 +57,7 @@ def exe_freq(level,sub):
     exercise_decode = exercise.json()
     return exercise_decode
 
-## REQUEST PROA ##
+## REQUEST HEADING EXERCISES ##
 def exe_heading(level,sub):
     api = 'https://questoesfraseologia-default-rtdb.firebaseio.com'
     heading = requests.get(f'{api}/teoria/{level}/{sub}/.json')
@@ -73,9 +72,11 @@ def exe_heading(level,sub):
 
 
 
-####------------------------------------- SUBPÁGINAS -------------------------------------####
+#------------------------------------- SUBPAGES -------------------------------------#
 
-### SUBPÁGINA DE ALTITUDES
+## Each function down below represents a subpage that can be selected in the sidebar selector ##
+
+### ALTITUDES SUBPAGE
 def altitudes():
 
 
@@ -96,7 +97,7 @@ def altitudes():
         """, unsafe_allow_html=True)
 
 
-    ### REQUEST DE EXERCÍCIO ###
+    ### EXERCISE REQUEST ###
 
     ex_alt = exe_alt('nivel1','altitudes')
 
@@ -106,14 +107,6 @@ def altitudes():
     def rerun():
         st.session_state.alt_state = exe_alt('nivel1','altitudes')
 
-
-    ### CONTAINER DO ENUNCIADO ###
-    # if "load_state" not in st.session_state:
-    #     st.session_state.load_state = False
-    #
-    # if st.button("Gerar exercício") or st.session_state.load_state:
-    #     st.session_state.load_state = True
-    #     gerarquestao()
 
     st.markdown(
     """
@@ -147,25 +140,22 @@ def altitudes():
 
     st.text("")
 
-    #st.session_state.load_state['benchmark']
-
-    ### BOTÃO GRAVAR ###
+    ### RECORDING BUTTON ###
 
     if st.button("Gravar"):
-        rec = sr.Recognizer()
-        with sr.Microphone() as mic:
-            rec.adjust_for_ambient_noise(mic)
-            #st.write('gravando...')
-            audio = rec.listen(mic)
-            text = rec.recognize_google(audio, language="pt-BR")
-            print(text)
-            print(st.session_state.alt_state['benchmark'])
-            if text == st.session_state.alt_state['benchmark']:
-                st.text('Resposta certa!!!')
-            else:
-                st.text('Resposta errada :(')
+        text = speech_rec()
+        print(text)
+        print(st.session_state.alt_state['benchmark'])
+        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
+        print(similarity)
 
-            st.button('Próxima!', on_click = rerun())
+        if similarity >= 0.8:
+            st.text("Resposta certa!!")
+
+        else:
+            st.text("Resposta errada :(")
+
+        st.button('Próxima!', on_click = rerun())
 
 
     else:
@@ -196,7 +186,7 @@ def altitudes():
 
 
 
-### SUBPÁGINA DE DISTANCIAS
+### DISTANCE SUBPAGE
 def distances():
 
 
@@ -259,24 +249,22 @@ def distances():
 
     st.text("")
 
-    ### BOTÃO GRAVAR ###
+    ### RECORDING BUTTON ###
 
     if st.button("Gravar"):
-        rec = sr.Recognizer()
-        with sr.Microphone() as mic:
-            rec.adjust_for_ambient_noise(mic)
-            #st.write('gravando...')
-            audio = rec.listen(mic)
-            text = rec.recognize_google(audio, language="pt-BR")
-            print(text)
-            print(st.session_state.dist_state['benchmark'])
-            if text == st.session_state.dist_state['benchmark']:
-                st.text('Resposta certa!!!')
-            else:
-                st.text('Resposta errada :(')
+        text = speech_rec()
+        print(text)
+        print(st.session_state.alt_state['benchmark'])
+        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
+        print(similarity)
 
-            st.button('Próxima!', on_click = rerun())
+        if similarity >= 0.8:
+            st.text("Resposta certa!!")
 
+        else:
+            st.text("Resposta errada :(")
+
+        st.button('Próxima!', on_click = rerun())
 
     else:
         st.markdown(
@@ -306,7 +294,7 @@ def distances():
 
 
 
-### SUBPÁGINA DE FREQUENCIAS
+### FREQUENCIES SUBPAGE
 def frequencies():
 
 
@@ -370,24 +358,22 @@ def frequencies():
 
     st.text("")
 
-    ### BOTÃO GRAVAR ###
+    ### RECORDING BUTTON ###
 
     if st.button("Gravar"):
-        rec = sr.Recognizer()
-        with sr.Microphone() as mic:
-            rec.adjust_for_ambient_noise(mic)
-            #st.write('gravando...')
-            audio = rec.listen(mic)
-            text = rec.recognize_google(audio, language="pt-BR")
-            print(text)
-            print(st.session_state.freq_state['benchmark'])
-            if text == st.session_state.freq_state['benchmark']:
-                st.text('Resposta certa!!!')
-            else:
-                st.text('Resposta errada :(')
+        text = speech_rec()
+        print(text)
+        print(st.session_state.alt_state['benchmark'])
+        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
+        print(similarity)
 
-            st.button('Próxima!', on_click = rerun())
+        if similarity >= 0.8:
+            st.text("Resposta certa!!")
 
+        else:
+            st.text("Resposta errada :(")
+
+        st.button('Próxima!', on_click = rerun())
 
     else:
         st.markdown(
@@ -417,7 +403,7 @@ def frequencies():
 
 
 
-### SUBPÁGINA DE PROAS
+### HEADINGS SUBPAGE
 def headings():
 
 
@@ -481,24 +467,22 @@ def headings():
 
     st.text("")
 
-    ### BOTÃO GRAVAR ###
+    ### RECORDING BUTTON ###
 
     if st.button("Gravar"):
-        rec = sr.Recognizer()
-        with sr.Microphone() as mic:
-            rec.adjust_for_ambient_noise(mic)
-            #st.write('gravando...')
-            audio = rec.listen(mic)
-            text = rec.recognize_google(audio, language="pt-BR")
-            print(text)
-            print(st.session_state.proa_state['benchmark'])
-            if text == st.session_state.proa_state['benchmark']:
-                st.text('Resposta certa!!!')
-            else:
-                st.text('Resposta errada :(')
+        text = speech_rec()
+        print(text)
+        print(st.session_state.alt_state['benchmark'])
+        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
+        print(similarity)
 
-            st.button('Próxima!', on_click = rerun())
+        if similarity >= 0.8:
+            st.text("Resposta certa!!")
 
+        else:
+            st.text("Resposta errada :(")
+
+        st.button('Próxima!', on_click = rerun())
 
     else:
         st.markdown(
@@ -526,15 +510,19 @@ def headings():
      Após sua fala, um feedback com a correção irá aprecer.""")
     st.markdown("")
 
-####------------------------------------- FIM DAS SUBPÁGINAS -------------------------------------####
+#------------------------------------- THE END OF SUBPAGES -------------------------------------#
 
-### INDEX DE PÁGINAS + FUNÇÃO PARA RODAR
+## PAGE INDEX + SIDEBAR
+
+### INDEX
 page_names_to_funcs = {
     "Altitudes": altitudes,
     "Distâncias": distances,
     "Frequências": frequencies,
     "Proas": headings,
 }
+
+### SIDEBAR
 
 selected_page = st.sidebar.selectbox("Selecione o tipo de exercício:", page_names_to_funcs.keys())
 page_names_to_funcs[selected_page]()
