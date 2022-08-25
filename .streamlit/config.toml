@@ -1,6 +1,10 @@
+[global]
+showWarningOnDirectExecution = false
+
 [theme]
 primaryColor="#f2b90c"
 backgroundColor="#000000"
 secondaryBackgroundColor="#181818"
 textColor="#FFFFFF"
 font="sans serif"
+

@@ -1,13 +1,16 @@
+from cgitb import text
 from dataclasses import replace
 import os
+import os.path
 import pyaudio
 import random as rd
 import speech_recognition as sr
 import streamlit as st
-from ast import Return
-from numpy import append
+import numpy as np
 import pandas as pd
 import spacy
+from io import BytesIO
+import streamlit.components.v1 as components
 
 
 ### IMPORTS A RANDOM PIC FROM A THE AD FOLDER ###
@@ -24,6 +27,15 @@ def speech_rec():
         rec.adjust_for_ambient_noise(mic)
         audio = rec.listen(mic)
         text = rec.recognize_google(audio, language="pt-BR")
+    return text
+
+def new_speech_rec(path):
+    rec = sr.Recognizer()
+
+    with sr.AudioFile(path) as source:
+        audio_data = rec.record(source)
+        text = rec.recognize_google(audio_data,language="pt-BR")
+        #os.remove("/Users/fred/Documents/Repos/Streamlit/fraseologia/wav_test.wav")
     return text
 
 
@@ -297,6 +309,50 @@ def string_comparison(speech,benchmark):
 def number_change(text):
     for i in text:
         replace()
+
+def audiorec_demo_app(func):
+
+    if os.path.exists("/Users/fred/Documents/Repos/Streamlit/fraseologia/wav_test.wav"):
+        os.remove("/Users/fred/Documents/Repos/Streamlit/fraseologia/wav_test.wav")
+
+
+    parent_dir = os.path.dirname(os.path.abspath(__file__))
+    # Custom REACT-based component for recording client audio in browser
+    build_dir = os.path.join(parent_dir, "st_audiorec/frontend/build")
+    # specify directory and initialize st_audiorec object functionality
+    st_audiorec = components.declare_component("st_audiorec", path=build_dir)
+
+    # STREAMLIT AUDIO RECORDER Instance
+    val = st_audiorec()
+
+    if isinstance(val, dict):  # retrieve audio data
+        with st.spinner('carregando...'):
+            ind, val = zip(*val['arr'].items())
+            ind = np.array(ind, dtype=int)  # convert to np array
+            val = np.array(val)             # convert to np array
+            sorted_ints = val[ind]
+            stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
+            wav_bytes = stream.read()
+            with open('/Users/fred/Documents/Repos/Streamlit/fraseologia/wav_test.wav', mode='bx') as f:
+                f.write(wav_bytes)
+
+
+    with st.spinner("carregando..."):
+        path = "/Users/fred/Documents/Repos/Streamlit/fraseologia/wav_test.wav"
+        text = new_speech_rec(path)
+        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
+        print(f"O Correto: {st.session_state.alt_state['benchmark']}")
+        print(f"O que foi dito: {text}")
+        print(f"O grau de similaridade: {similarity}")
+        if similarity >= 0.8:
+            st.text("Resposta certa!!")
+
+        else:
+            st.text("Resposta errada :(")
+
+        func()
+
+
 
 if __name__ == "__main__":
     print("Hello World")
