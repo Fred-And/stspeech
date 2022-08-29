@@ -324,26 +324,26 @@ def audiorec_demo_app(func):
     # STREAMLIT AUDIO RECORDER Instance
     val = st_audiorec()
     #print(val)
+    if isinstance(val, dict):
+        with st.spinner('carregando...'):
+            ind, val = zip(*val['arr'].items())
+            ind = np.array(ind, dtype=int)  # convert to np array
+            val = np.array(val)             # convert to np array
+            sorted_ints = val[ind]
+            stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
+            #wav_bytes = stream.read()
+            text = new_speech_rec(stream)
+            similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
+            print(f"O Correto: {st.session_state.alt_state['benchmark']}")
+            print(f"O que foi dito: {text}")
+            print(f"O grau de similaridade: {similarity}")
+            if similarity >= 0.8:
+                st.text("Resposta certa!!")
 
-    with st.spinner('carregando...'):
-        ind, val = zip(*val['arr'].items())
-        ind = np.array(ind, dtype=int)  # convert to np array
-        val = np.array(val)             # convert to np array
-        sorted_ints = val[ind]
-        stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
-        #wav_bytes = stream.read()
-        text = new_speech_rec(stream)
-        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
-        print(f"O Correto: {st.session_state.alt_state['benchmark']}")
-        print(f"O que foi dito: {text}")
-        print(f"O grau de similaridade: {similarity}")
-        if similarity >= 0.8:
-            st.text("Resposta certa!!")
+            else:
+                st.text("Resposta errada :(")
 
-        else:
-            st.text("Resposta errada :(")
-
-        func()
+            func()
 
 
 # def audiorec_demo_app(func):
