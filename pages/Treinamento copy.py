@@ -151,7 +151,7 @@ def altitudes():
 
     st.text("")
 
-    ### RECORDING BUTTON ##
+    ### RECORDING BUTTON ###
     audiorec_demo_app(rerun)
 
 
