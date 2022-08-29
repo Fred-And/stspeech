@@ -4,7 +4,7 @@ import requests
 import random
 import os
 import json
-from funcs.web_funcs import boot_activate, center_logo, dyn_back,speech_rec, new_speech_rec, string_comparison, audiorec_demo_app
+from funcs.web_funcs import boot_activate, center_logo, dyn_back, new_speech_rec, string_comparison, audiorec_demo_app
 
 
 # ACTIVATE BOOTSTRAP #
@@ -152,8 +152,9 @@ def altitudes():
     st.text("")
 
     ### RECORDING BUTTON ###
-    audiorec_demo_app(rerun)
+    text = audiorec_demo_app(rerun,1)
 
+    
 ### DISTANCE SUBPAGE
 def distances():
 
@@ -229,7 +230,7 @@ def distances():
 
     ### RECORDING BUTTON ###
 
-    audiorec_demo_app(rerun)
+    audiorec_demo_app(rerun,2)
 
 
 ### FREQUENCIES SUBPAGE
@@ -306,7 +307,7 @@ def frequencies():
 
     ### RECORDING BUTTON ###
 
-    audiorec_demo_app(rerun)
+    audiorec_demo_app(rerun,3)
 
 
 ### HEADINGS SUBPAGE
@@ -334,11 +335,11 @@ def headings():
 
     ex_heading = exe_heading('nivel1','proas')
 
-    if "proa_state" not in st.session_state:
-        st.session_state.proa_state = ex_heading
+    if "head_state" not in st.session_state:
+        st.session_state.head_state = ex_heading
 
     def rerun():
-        st.session_state.proa_state = exe_heading('nivel1','proas')
+        st.session_state.head_state = exe_heading('nivel1','proas')
 
     ### STATEMENT ###
     st.markdown(
@@ -365,7 +366,7 @@ def headings():
         </p>
     </body>
     </html>
-    """%st.session_state.proa_state['enunciado'],unsafe_allow_html=True
+    """%st.session_state.head_state['enunciado'],unsafe_allow_html=True
     )
 
     ### INSTRUCTIONS ###
@@ -383,7 +384,7 @@ def headings():
 
     ### RECORDING BUTTON ###
 
-    audiorec_demo_app(rerun)
+    audiorec_demo_app(rerun ,3)
 
 
 

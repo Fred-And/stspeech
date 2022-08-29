@@ -298,7 +298,16 @@ def string_comparison(speech,benchmark):
     return similarity
 
 
-def audiorec_demo_app(func):
+def audiorec_demo_app(func,type):
+
+    if type == 1:
+        type = st.session_state.alt_state['benchmark']
+    elif type == 2:
+        type = st.session_state.dist_state['benchmark']
+    elif type == 3:
+        type = st.session_state.freq_state['benchmark']
+    else:
+        type = st.session_state.head_state['benchmark']
 
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     # Custom REACT-based component for recording client audio in browser
@@ -318,8 +327,8 @@ def audiorec_demo_app(func):
             stream = BytesIO(b"".join([int(v).to_bytes(1, "big") for v in sorted_ints]))
             #wav_bytes = stream.read()
             text = new_speech_rec(stream)
-            similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
-            print(f"O Correto: {st.session_state.alt_state['benchmark']}")
+            similarity = string_comparison(text,type)
+            print(f"O Correto: {type}")
             print(f"O que foi dito: {text}")
             print(f"O grau de similaridade: {similarity}")
             if similarity >= 0.8:
@@ -329,6 +338,10 @@ def audiorec_demo_app(func):
                 st.text("Resposta errada :(")
 
             func()
+
+
+    
+            
 
 
 # def audiorec_demo_app(func):
