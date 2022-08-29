@@ -298,7 +298,7 @@ def string_comparison(speech,benchmark):
     return similarity
 
 
-def audiorec_demo_app(func,type):
+def audiorec_demo_app(func , type):
 
     if type == 1:
         type = st.session_state.alt_state['benchmark']
@@ -340,8 +340,8 @@ def audiorec_demo_app(func,type):
             func()
 
 
-    
-            
+
+
 
 
 # def audiorec_demo_app(func):
