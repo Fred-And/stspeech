@@ -328,9 +328,10 @@ def audiorec_demo_app(func , type):
             #wav_bytes = stream.read()
             text = new_speech_rec(stream)
             similarity = string_comparison(text,type)
-            print(f"O Correto: {type}")
-            print(f"O que foi dito: {text}")
-            print(f"O grau de similaridade: {similarity}")
+            st.text(f"O Correto: {type}")
+            st.text(f"O que foi dito: {text}")
+            st.text(f"O grau de similaridade: {similarity}")
+
             if similarity >= 0.8:
                 st.text("Resposta certa!!")
 
