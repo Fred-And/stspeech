@@ -21,14 +21,6 @@ def import_pic():
 
 
 ### SPEECH RECOGNITION SCRIPT(ALREADY IMPLEMENTED TO STREAMLIT) ###
-def speech_rec():
-    rec = sr.Recognizer()
-    with sr.Microphone() as mic:
-        rec.adjust_for_ambient_noise(mic)
-        audio = rec.listen(mic)
-        text = rec.recognize_google(audio, language="pt-BR")
-    return text
-
 def new_speech_rec(path):
     rec = sr.Recognizer()
 
@@ -37,8 +29,6 @@ def new_speech_rec(path):
         text = rec.recognize_google(audio_data,language="pt-BR")
         #os.remove("/Users/fred/Documents/Repos/Streamlit/fraseologia/wav_test.wav")
     return text
-
-
 
 
 ### IMPORTS A RANDOM AUDIO FROM AUDIOS FOLDER ###
@@ -294,7 +284,6 @@ def dyn_back():
     unsafe_allow_html=True)
 
 ### STRING COMPARISON ###
-
 def string_comparison(speech,benchmark):
     nlp = spacy.load("pt_core_news_lg")
 
@@ -307,10 +296,6 @@ def string_comparison(speech,benchmark):
     similarity = t1.similarity(t2)
 
     return similarity
-
-def number_change(text):
-    for i in text:
-        replace()
 
 
 def audiorec_demo_app(func):

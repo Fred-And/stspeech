@@ -138,14 +138,14 @@ def altitudes():
     )
 
 
-    ### INSTRUÇÕES ###
+    ### INSTRUCTIONS ###
     st.sidebar.markdown("""Para realizar esse exercício,
      você deve observar a altitude apresentada na caixa e
      a partir disso, clicar no botão "Gravar" e falar
      a altitude de forma correta conforme previsto nos regulamentos.
      Após sua fala, um feedback com a correção irá aprecer.""")
     st.markdown("")
-    
+
     ### BLANK SPACE ###
     st.text("")
 
@@ -153,9 +153,6 @@ def altitudes():
 
     ### RECORDING BUTTON ###
     audiorec_demo_app(rerun)
-
-
-
 
 ### DISTANCE SUBPAGE
 def distances():
@@ -189,7 +186,7 @@ def distances():
         st.session_state.dist_state = exe_dist('nivel1','distancias')
 
 
-
+    ### STATEMENT ###
     st.markdown(
     """
     <html>
@@ -217,47 +214,7 @@ def distances():
     """%st.session_state.dist_state['enunciado'],unsafe_allow_html=True
     )
 
-    ### BLANK SPACE ###
-    st.text("")
-
-    st.text("")
-
-    ### RECORDING BUTTON ###
-
-    if st.button("Gravar"):
-        text = speech_rec()
-        print(text)
-        print(st.session_state.alt_state['benchmark'])
-        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
-        print(similarity)
-
-        if similarity >= 0.8:
-            st.text("Resposta certa!!")
-
-        else:
-            st.text("Resposta errada :(")
-
-        st.button('Próxima!', on_click = rerun())
-
-    else:
-        st.markdown(
-        """
-        <html>
-        <head>
-        <style>
-            .tree{
-                font-size:20px;
-            }
-        </style>
-        </head>
-        <body>
-            <p class="tree"> <b>Pressione o botao para gravar </p>
-        </body>
-        </html>
-        """,unsafe_allow_html=True)
-
-
-    ### INSTRUÇÕES ###
+    ### INSTRUCTIONS ###
     st.sidebar.markdown("""Para realizar esse exercício,
      você deve observar a altitude apresentada na caixa e
      a partir disso, clicar no botão "Gravar" e falar
@@ -265,6 +222,14 @@ def distances():
      Após sua fala, um feedback com a correção irá aprecer.""")
     st.markdown("")
 
+    ### BLANK SPACE ###
+    st.text("")
+
+    st.text("")
+
+    ### RECORDING BUTTON ###
+
+    audiorec_demo_app(rerun)
 
 
 ### FREQUENCIES SUBPAGE
@@ -298,7 +263,7 @@ def frequencies():
     def rerun():
         st.session_state.freq_state = exe_freq('nivel1','frequencias')
 
-
+    ### STATEMENT ###
     st.markdown(
     """
     <html>
@@ -326,47 +291,7 @@ def frequencies():
     """%st.session_state.freq_state['enunciado'],unsafe_allow_html=True
     )
 
-    ### BLANK SPACE ###
-    st.text("")
-
-    st.text("")
-
-    ### RECORDING BUTTON ###
-
-    if st.button("Gravar"):
-        text = speech_rec()
-        print(text)
-        print(st.session_state.alt_state['benchmark'])
-        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
-        print(similarity)
-
-        if similarity >= 0.8:
-            st.text("Resposta certa!!")
-
-        else:
-            st.text("Resposta errada :(")
-
-        st.button('Próxima!', on_click = rerun())
-
-    else:
-        st.markdown(
-        """
-        <html>
-        <head>
-        <style>
-            .tree{
-                font-size:20px;
-            }
-        </style>
-        </head>
-        <body>
-            <p class="tree"> <b>Pressione o botao para gravar </p>
-        </body>
-        </html>
-        """,unsafe_allow_html=True)
-
-
-    ### INSTRUÇÕES ###
+    ### INSTRUCTIONS ###
     st.sidebar.markdown("""Para realizar esse exercício,
      você deve observar a altitude apresentada na caixa e
      a partir disso, clicar no botão "Gravar" e falar
@@ -374,6 +299,14 @@ def frequencies():
      Após sua fala, um feedback com a correção irá aprecer.""")
     st.markdown("")
 
+    ### BLANK SPACE ###
+    st.text("")
+
+    st.text("")
+
+    ### RECORDING BUTTON ###
+
+    audiorec_demo_app(rerun)
 
 
 ### HEADINGS SUBPAGE
@@ -407,7 +340,7 @@ def headings():
     def rerun():
         st.session_state.proa_state = exe_heading('nivel1','proas')
 
-
+    ### STATEMENT ###
     st.markdown(
     """
     <html>
@@ -435,6 +368,14 @@ def headings():
     """%st.session_state.proa_state['enunciado'],unsafe_allow_html=True
     )
 
+    ### INSTRUCTIONS ###
+    st.sidebar.markdown("""Para realizar esse exercício,
+     você deve observar a altitude apresentada na caixa e
+     a partir disso, clicar no botão "Gravar" e falar
+     a altitude de forma correta conforme previsto nos regulamentos.
+     Após sua fala, um feedback com a correção irá aprecer.""")
+    st.markdown("")
+
     ### BLANK SPACE ###
     st.text("")
 
@@ -442,46 +383,9 @@ def headings():
 
     ### RECORDING BUTTON ###
 
-    if st.button("Gravar"):
-        text = speech_rec()
-        print(text)
-        print(st.session_state.alt_state['benchmark'])
-        similarity = string_comparison(text,st.session_state.alt_state['benchmark'])
-        print(similarity)
-
-        if similarity >= 0.8:
-            st.text("Resposta certa!!")
-
-        else:
-            st.text("Resposta errada :(")
-
-        st.button('Próxima!', on_click = rerun())
-
-    else:
-        st.markdown(
-        """
-        <html>
-        <head>
-        <style>
-            .tree{
-                font-size:20px;
-            }
-        </style>
-        </head>
-        <body>
-            <p class="tree"> <b>Pressione o botao para gravar </p>
-        </body>
-        </html>
-        """,unsafe_allow_html=True)
+    audiorec_demo_app(rerun)
 
 
-    ### INSTRUÇÕES ###
-    st.sidebar.markdown("""Para realizar esse exercício,
-     você deve observar a altitude apresentada na caixa e
-     a partir disso, clicar no botão "Gravar" e falar
-     a altitude de forma correta conforme previsto nos regulamentos.
-     Após sua fala, um feedback com a correção irá aprecer.""")
-    st.markdown("")
 
 #------------------------------------- THE END OF SUBPAGES -------------------------------------#
 
