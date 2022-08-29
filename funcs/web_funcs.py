@@ -29,14 +29,6 @@ def speech_rec():
         text = rec.recognize_google(audio, language="pt-BR")
     return text
 
-# def new_speech_rec(path):
-#     rec = sr.Recognizer()
-#     audio_data = rec.listen(sr.AudioData(path,16000,2))
-#     text = rec.recognize_google(audio_data,language="pt-BR")
-#             #os.remove("/Users/fred/Documents/Repos/Streamlit/fraseologia/wav_test.wav")
-#         #print(text)
-#     return text
-
 def new_speech_rec(path):
     rec = sr.Recognizer()
 
@@ -321,29 +313,6 @@ def number_change(text):
         replace()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def audiorec_demo_app(func):
 
     parent_dir = os.path.dirname(os.path.abspath(__file__))
@@ -354,8 +323,8 @@ def audiorec_demo_app(func):
 
     # STREAMLIT AUDIO RECORDER Instance
     val = st_audiorec()
-    print(val)
-   
+    #print(val)
+
     with st.spinner('carregando...'):
         ind, val = zip(*val['arr'].items())
         ind = np.array(ind, dtype=int)  # convert to np array
@@ -375,26 +344,6 @@ def audiorec_demo_app(func):
             st.text("Resposta errada :(")
 
         func()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # def audiorec_demo_app(func):

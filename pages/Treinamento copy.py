@@ -137,13 +137,6 @@ def altitudes():
     """%st.session_state.alt_state['enunciado'],unsafe_allow_html=True
     )
 
-    ### BLANK SPACE ###
-    st.text("")
-
-    st.text("")
-
-    ### RECORDING BUTTON ##
-    audiorec_demo_app(rerun)
 
     ### INSTRUÇÕES ###
     st.sidebar.markdown("""Para realizar esse exercício,
@@ -152,6 +145,15 @@ def altitudes():
      a altitude de forma correta conforme previsto nos regulamentos.
      Após sua fala, um feedback com a correção irá aprecer.""")
     st.markdown("")
+    
+    ### BLANK SPACE ###
+    st.text("")
+
+    st.text("")
+
+    ### RECORDING BUTTON ##
+    audiorec_demo_app(rerun)
+
 
 
 
@@ -185,7 +187,7 @@ def distances():
 
     def rerun():
         st.session_state.dist_state = exe_dist('nivel1','distancias')
-        
+
 
 
     st.markdown(
